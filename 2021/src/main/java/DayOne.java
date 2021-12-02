@@ -6,7 +6,7 @@ public class DayOne {
     public static void main(String[] args) throws IOException {
 
 
-        List<Integer> numbers = TextParser.parseFile("day1.txt");
+        List<Integer> numbers = TextParser.parseFileToListOfIntegers("day1.txt");
         DayOne dayOne = new DayOne();
         int partOne = dayOne.getCountOfPreviousNumbersThatAreGreater(numbers, 1);
         int partTwo = dayOne.getCountOfPreviousNumbersThatAreGreater(numbers, 3);

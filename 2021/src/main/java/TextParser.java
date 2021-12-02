@@ -5,11 +5,11 @@ import java.util.List;
 
 public class TextParser {
 
-    public static List<Integer> parseFile(String fileName) throws IOException {
+    public static List<Integer> parseFileToListOfIntegers(String fileName) throws IOException {
         TextParser instance = new TextParser();
         URL url = instance.getClass().getClassLoader().getResource(fileName);
         FileInputStream fileStream =  new FileInputStream(url.getPath());
-        ArrayList<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(fileStream));
         String currentLine;
         while ((currentLine = br.readLine()) != null) {
@@ -18,4 +18,18 @@ public class TextParser {
         }
         return numbers;
     }
+
+    public static List<String> parseFileToListOfWords(String fileName) throws IOException {
+        TextParser instance = new TextParser();
+        URL url = instance.getClass().getClassLoader().getResource(fileName);
+        FileInputStream fileStream =  new FileInputStream(url.getPath());
+        List<String> words = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new InputStreamReader(fileStream));
+        String currentLine;
+        while ((currentLine = br.readLine()) != null) {
+            words.add(currentLine);
+        }
+        return words;
+    }
+
 }
