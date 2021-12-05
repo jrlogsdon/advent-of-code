@@ -90,7 +90,6 @@ class DayThreeTest {
         List<String> binaryNumbersAsString = TextParser.parseFileToListOfWords("day3.txt");
 
         System.out.println(dayThree.getPowerConsumption(binaryNumbersAsString));
-
     }
 
 }

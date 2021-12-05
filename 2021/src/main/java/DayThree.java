@@ -9,8 +9,6 @@ public class DayThree {
         int[] oneCounts = countNumberOfOnes(binaryNumbersAsString, arrayLength);
         int[] epsilon = new int[arrayLength];
         int[] gamma = new int[arrayLength];
-        // 3 elements the one with 2 is greater
-        // is it closer to the
         for (int i = 0; i < oneCounts.length; i++) {
             int numberOfZeros = totalAmountNumbers - oneCounts[i];
             if (numberOfZeros > oneCounts[i]) {
@@ -21,7 +19,6 @@ public class DayThree {
                 epsilon[i] = 0;
             }
         }
-
         int eps = convertFromBinaryArrayToInteger(epsilon);
         int gam = convertFromBinaryArrayToInteger(gamma);
         return eps * gam;
@@ -125,6 +122,5 @@ public class DayThree {
         }
         return result;
     }
-
 
 }

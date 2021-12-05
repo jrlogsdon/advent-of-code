@@ -32,4 +32,13 @@ public class TextParser {
         return words;
     }
 
+    public static List<Integer> parseMoves(String moves) {
+        String[] bingoMoves = moves.split(",");
+        List<Integer> bingoNumbers = new ArrayList<>();
+        for (String move : bingoMoves) {
+            bingoNumbers.add(Integer.parseInt(move.trim()));
+        }
+        return bingoNumbers;
+    }
+
 }
