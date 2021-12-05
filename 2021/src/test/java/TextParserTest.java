@@ -25,7 +25,7 @@ class TextParserTest {
 
     @Test
     void parseBoard() throws IOException {
-        String input = "\n22 13 17 11 0\n 8  2 23  4 24\n21  9 14 16  7\n" +
+        String input = "22 13 17 11 0\n 8  2 23  4 24\n21  9 14 16  7\n" +
                 " 6 10  3 18  5\n" +
                 " 1 12 20 15 19";
         Reader stringReader = new StringReader(input);
