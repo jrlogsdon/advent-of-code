@@ -35,8 +35,17 @@ public class BingoBoard {
         return numberSeen;
     }
 
+    public int sumOfUnmarkedNumbers(Set<Integer> numbersCalled) {
+        int sumOfUnmarked = 0;
+        for (Integer i : bingoNumbers) {
+            if (!numbersCalled.contains(i)) {
+                sumOfUnmarked += i;
+            }
+        }
+        return sumOfUnmarked;
+    }
 
-    public boolean isBingo() {
+    public boolean hasBingo() {
         if (hasHorizontalBingo(visited)) return true;
         if (hasVerticalBingo(visited)) return true;
         return false;

@@ -41,8 +41,18 @@ public class TextParser {
         return bingoNumbers;
     }
 
-    public static int[][] parseBoard(BufferedReader reader) {
-        return new int[5][5];
+    public static BingoBoard parseBoard(BufferedReader reader) throws IOException {
+        BingoBoard board = new BingoBoard();
+        int i = 0;
+        String currentLine;
+        while (i < 5 && (currentLine = reader.readLine()) != "\n" && currentLine != null && !currentLine.equals("")) {
+                String[] numbers = currentLine.trim().split("\\s+");
+                for (int j = 0; j < numbers.length; j++) {
+                    board.addNumber(i, j, Integer.parseInt(numbers[j]));
+                }
+                i++;
+        }
+        return board;
     }
 
 }
