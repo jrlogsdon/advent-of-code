@@ -41,4 +41,8 @@ public class TextParser {
         return bingoNumbers;
     }
 
+    public static int[][] parseBoard(BufferedReader reader) {
+        return new int[5][5];
+    }
+
 }
