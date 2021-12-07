@@ -61,7 +61,31 @@ class TextParserTest {
         expected.add(new Point(5, 8));
         expected.add(new Point(5, 9));
         assertEquals(expected, actual);
+    }
 
+    @Test
+    void parseHigherVertNumber() {
+        String input = "5,9 -> 5,8";
+        List<Point> actual = TextParser.getLine(input);
+        List<Point> expected = new ArrayList<>();
+        expected.add(new Point(5, 8));
+        expected.add(new Point(5, 9));
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void parseLowerNumberOnEnd() {
+        String input = "5,9 -> 0,9";
+        List<Point> actual = TextParser.getLine(input);
+        List<Point> expected = new ArrayList<>();
+        expected.add(new Point(0,9));
+        expected.add(new Point(1, 9));
+
+        expected.add(new Point(2, 9));
+        expected.add(new Point(3, 9));
+        expected.add(new Point(4, 9));
+        expected.add(new Point(5, 9));
+        assertEquals(expected, actual);
     }
 
 }

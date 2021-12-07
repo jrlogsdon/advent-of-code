@@ -72,6 +72,7 @@ public class TextParser {
     }
 
     private static void addVerticalPoints(int x, int yStart, int yEnd, List<Point> points) {
+        if (yStart > yEnd) addVerticalPoints(x, yEnd, yStart, points);
         for (int i = yStart; i <= yEnd; i++) {
             points.add(new Point(x, i));
 
@@ -79,6 +80,7 @@ public class TextParser {
     }
 
     private static void addHorizontalPoints(int y, int xStart, int xEnd, List<Point> points) {
+        if (xStart > xEnd) addHorizontalPoints(y, xEnd, xStart, points);
         for (int i = xStart; i <= xEnd; i++) {
             points.add(new Point(i, y));
 
