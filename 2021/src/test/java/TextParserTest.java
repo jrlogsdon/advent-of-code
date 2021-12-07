@@ -37,4 +37,31 @@ class TextParserTest {
         6, 10, 3, 18, 5, 1, 12, 20, 15, 19)));
     }
 
+    @Test
+    void parseHorizontal() {
+        String input = "0,9 -> 5,9";
+        List<Point> actual = TextParser.getLine(input);
+        List<Point> expected = new ArrayList<>();
+        expected.add(new Point(0,9));
+        expected.add(new Point(1, 9));
+
+        expected.add(new Point(2, 9));
+        expected.add(new Point(3, 9));
+        expected.add(new Point(4, 9));
+        expected.add(new Point(5, 9));
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void parseVerticalLine() {
+        String input = "5,8 -> 5,9";
+        List<Point> actual = TextParser.getLine(input);
+        List<Point> expected = new ArrayList<>();
+        expected.add(new Point(5, 8));
+        expected.add(new Point(5, 9));
+        assertEquals(expected, actual);
+
+    }
+
 }

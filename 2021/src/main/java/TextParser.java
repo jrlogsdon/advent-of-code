@@ -55,4 +55,34 @@ public class TextParser {
         return board;
     }
 
+    public static List<Point> getLine(String lines) {
+        String[] vents = lines.split(" -> ");
+        List<Point> points = new ArrayList<>();
+        int xOne = Integer.parseInt(vents[0].split(",")[0]);
+        int yOne = Integer.parseInt(vents[0].split(",")[1]);
+        int xTwo = Integer.parseInt(vents[1].split(",")[0]);
+        int yTwo = Integer.parseInt(vents[1].split(",")[1]);
+        if (xOne == xTwo) {
+            addVerticalPoints(xOne, yOne, yTwo, points);
+        }
+        if (yOne == yTwo) {
+            addHorizontalPoints(yOne, xOne, xTwo, points);
+        }
+        return points;
+    }
+
+    private static void addVerticalPoints(int x, int yStart, int yEnd, List<Point> points) {
+        for (int i = yStart; i <= yEnd; i++) {
+            points.add(new Point(x, i));
+
+        }
+    }
+
+    private static void addHorizontalPoints(int y, int xStart, int xEnd, List<Point> points) {
+        for (int i = xStart; i <= xEnd; i++) {
+            points.add(new Point(i, y));
+
+        }
+    }
+
 }
