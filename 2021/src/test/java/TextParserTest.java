@@ -88,4 +88,31 @@ class TextParserTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void diagonalLine() {
+        String input = "1,1 -> 3,3";
+        List<Point> expected = new ArrayList<>();
+        expected.add(new Point(1,1));
+        expected.add(new Point(2,2));
+        expected.add(new Point(3,3));
+
+        List<Point> actual = TextParser.getLineWithDiagonal(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testLeadingNumberDiaganol() {
+        String input = "9,7 -> 7,9";
+
+        List<Point> expected = new ArrayList<>();
+        expected.add(new Point(7,9));
+        expected.add(new Point(8,8));
+        expected.add(new Point(9,7));
+
+        List<Point> actual = TextParser.getLineWithDiagonal(input);
+        assertEquals(expected, actual);
+
+    }
+
+
 }
