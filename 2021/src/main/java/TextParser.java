@@ -79,7 +79,7 @@ public class TextParser {
 
     public static List<Integer> parseLanternFishInitialState(String row) {
         List<Integer> lanternInitialState = new ArrayList<>();
-        String[] numbers = row.split(": ")[1].split(",");
+        String[] numbers = row.split(",");
         for (String s : numbers) {
             lanternInitialState.add(Integer.parseInt(s));
         }

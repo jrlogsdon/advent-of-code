@@ -116,7 +116,7 @@ class TextParserTest {
 
     @Test
     void lanternFishInitialState() {
-        String str = "Initial state: 3,4,3,1,2";
+        String str = "3,4,3,1,2";
         List<Integer> expected = new ArrayList<>();
         expected.add(3);
         expected.add(4);
