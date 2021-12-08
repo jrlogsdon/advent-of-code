@@ -6,11 +6,8 @@ import java.util.List;
 public class TextParser {
 
     public static List<Integer> parseFileToListOfIntegers(String fileName) throws IOException {
-        TextParser instance = new TextParser();
-        URL url = instance.getClass().getClassLoader().getResource(fileName);
-        FileInputStream fileStream =  new FileInputStream(url.getPath());
+        BufferedReader br = getBufferedReaderFromFile(fileName);
         List<Integer> numbers = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new InputStreamReader(fileStream));
         String currentLine;
         while ((currentLine = br.readLine()) != null) {
             int currentInt = Integer.parseInt(currentLine);
@@ -20,11 +17,8 @@ public class TextParser {
     }
 
     public static List<String> parseFileToListOfWords(String fileName) throws IOException {
-        TextParser instance = new TextParser();
-        URL url = instance.getClass().getClassLoader().getResource(fileName);
-        FileInputStream fileStream =  new FileInputStream(url.getPath());
         List<String> words = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new InputStreamReader(fileStream));
+        BufferedReader br = getBufferedReaderFromFile(fileName);
         String currentLine;
         while ((currentLine = br.readLine()) != null) {
             words.add(currentLine);
@@ -45,7 +39,7 @@ public class TextParser {
         BingoBoard board = new BingoBoard();
         int i = 0;
         String currentLine;
-        while (i < 5 && (currentLine = reader.readLine()) != "\n" && currentLine != null && !currentLine.equals("")) {
+        while (i < 5 && (currentLine = reader.readLine()) != null && !currentLine.equals("")) {
                 String[] numbers = currentLine.trim().split("\\s+");
                 for (int j = 0; j < numbers.length; j++) {
                     board.addNumber(i, j, Integer.parseInt(numbers[j]));
@@ -56,11 +50,9 @@ public class TextParser {
     }
 
     public static List<Point> getAllPoints(String fileName) throws IOException {
-        TextParser instance = new TextParser();
-        URL url = instance.getClass().getClassLoader().getResource(fileName);
-        FileInputStream fileStream =  new FileInputStream(url.getPath());
+        BufferedReader br = getBufferedReaderFromFile(fileName);
         List<Point> points = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new InputStreamReader(fileStream));
+
         String currentLine;
         while ((currentLine = br.readLine()) != null) {
             List<Point> currentPoints = getLine(currentLine);
@@ -70,12 +62,33 @@ public class TextParser {
 
     }
 
-    public static List<Point> getAllPointsWithDiagonal(String fileName) throws IOException {
+    private static BufferedReader getBufferedReaderFromFile(String fileName) throws FileNotFoundException {
         TextParser instance = new TextParser();
         URL url = instance.getClass().getClassLoader().getResource(fileName);
         FileInputStream fileStream =  new FileInputStream(url.getPath());
-        List<Point> points = new ArrayList<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(fileStream));
+        return br;
+    }
+
+    public static List<Integer> getInitialLanternFishState(String fileName) throws IOException {
+        BufferedReader br = getBufferedReaderFromFile(fileName);
+        String initialState = br.readLine();
+        return parseLanternFishInitialState(initialState);
+
+    }
+
+    public static List<Integer> parseLanternFishInitialState(String row) {
+        List<Integer> lanternInitialState = new ArrayList<>();
+        String[] numbers = row.split(": ")[1].split(",");
+        for (String s : numbers) {
+            lanternInitialState.add(Integer.parseInt(s));
+        }
+        return lanternInitialState;
+    }
+
+    public static List<Point> getAllPointsWithDiagonal(String fileName) throws IOException {
+        BufferedReader br = getBufferedReaderFromFile(fileName);
+        List<Point> points = new ArrayList<>();
         String currentLine;
         while ((currentLine = br.readLine()) != null) {
             List<Point> currentPoints = getLineWithDiagonal(currentLine);

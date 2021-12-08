@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TextParserTest {
 
@@ -111,8 +112,34 @@ class TextParserTest {
 
         List<Point> actual = TextParser.getLineWithDiagonal(input);
         assertEquals(expected, actual);
-
     }
+
+    @Test
+    void lanternFishInitialState() {
+        String str = "Initial state: 3,4,3,1,2";
+        List<Integer> expected = new ArrayList<>();
+        expected.add(3);
+        expected.add(4);
+        expected.add(3);
+        expected.add(1);
+        expected.add(2);
+        List<Integer> actual = TextParser.parseLanternFishInitialState(str);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void parseLanternFile() throws IOException {
+        List<Integer> expected = new ArrayList<>();
+        expected.add(3);
+        expected.add(4);
+        expected.add(3);
+        expected.add(1);
+        expected.add(2);
+        List<Integer> actual = TextParser.getInitialLanternFishState("day6-sample.txt");
+        assertEquals(expected, actual);
+    }
+
+
 
 
 }
