@@ -20,6 +20,19 @@ public class DayTenTest {
         System.out.println(dayTen.sumOfSyntaxErrors(input));
     }
 
+    @Test
+    void partTwoSample() {
+        long actual = dayTen.completeLines(sample);
+        long expected = 288957;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void partTwo() {
+        System.out.println(dayTen.completeLines(input));
+
+    }
+
 
 
 
