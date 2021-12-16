@@ -3,36 +3,6 @@ import java.util.Map;
 
 public class DayFourteen {
 
-    public long getQuantityDifferenceOfExtremes(String input, int numberOfSteps) {
-        String[] lines = input.split("\n");
-        String state = lines[0];
-        Map<String, String> rules = getMapping(lines);
-        Map<String, Long> stringCounts = new HashMap<>();
-
-        for (int i = 0; i < numberOfSteps; i++) {
-            state = getUpdatedString(state, rules);
-
-        }
-        Map<Character, Integer> charCount = new HashMap<>();
-        for (int i = 0; i < state.length(); i++) {
-            char c = state.charAt(i);
-            int val = charCount.getOrDefault(c, 0) +1;
-            charCount.put(c,val);
-        }
-        long  min = Long.MAX_VALUE;
-        long max = Long.MIN_VALUE;
-        for (var entry: charCount.entrySet()) {
-            if (entry.getValue() > max) {
-                max = entry.getValue();
-            }
-            if (entry.getValue() < min) {
-                min = entry.getValue();
-            }
-        }
-        return max - min;
-
-    }
-
     public long getQuantityOfDifferenceExtremesFast(String input, int numberOfSteps) {
         String[] lines = input.split("\n");
 
