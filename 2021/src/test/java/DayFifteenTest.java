@@ -132,4 +132,18 @@ class DayFifteenTest {
         System.out.println(dayFifteen.getMinimumRiskPath(input));
     }
 
+    @Test
+    void samplePartTwo() {
+        int expected = 315;
+        int actual = dayFifteen.getExtendedRiskLevels(sample);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void partTwo() {
+        System.out.println(dayFifteen.getExtendedRiskLevels(input));
+    }
+
+
+
 }

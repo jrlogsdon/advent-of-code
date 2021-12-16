@@ -27,6 +27,42 @@ public class DayFifteen {
         return 0;
     }
 
+    public int getExtendedRiskLevels(String input) {
+        String[] lines = input.split("\n");
+
+        int[][] riskLevels = new int[lines.length*5][lines[0].length()*5];
+        for (int i = 0; i < riskLevels.length; i++) {
+            for (int j = 0; j < riskLevels[0].length; j++) {
+                int val = 0 ;
+                if (i < lines.length && j < lines[0].length()) {
+                    val = Character.getNumericValue(lines[i].charAt(j));
+                } else {
+                    if (j >= lines[0].length()){
+                        val = riskLevels[i][j - lines[0].length()] + 1;
+                    } else {
+                        val = riskLevels[i-lines.length][j] + 1;
+                    }
+                    val = val == 10 ? 1 : val;
+                }
+                riskLevels[i][j]=val;
+            }
+        }
+
+        Queue<NodeWithCost> bfs = new PriorityQueue<>(Comparator.comparingInt(val -> val.cost));
+        bfs.add(new NodeWithCost(new Point(0,0), 0));
+        Set<Point> visited = new HashSet<>();
+        while (bfs.size() > 0 ){
+            NodeWithCost node = bfs.poll();
+            if (node.point.x == riskLevels.length - 1 && node.point.y == riskLevels[0].length - 1)
+                return node.cost;
+            addNeighborsToQueue(bfs, node, riskLevels, visited);
+        }
+
+        return 0;
+    }
+
+
+
     private void addNeighborsToQueue(Queue<NodeWithCost> bfs, NodeWithCost node, int[][] riskLevels, Set<Point> visited) {
         Point currentPoint = node.point;
         if (node.point.x < riskLevels.length - 1) {
